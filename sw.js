@@ -1,5 +1,5 @@
 // 1. 更新時間戳記，強迫手機下載最新版
-const CACHE_NAME = 'pharmacist-edu-202603161240'; 
+const CACHE_NAME = 'pharmacist-edu-202603161241'; 
 
 const ASSETS = [
   './',
@@ -17,7 +17,7 @@ const ASSETS = [
   // 耳滴劑
   './img/ear_1.png', './img/ear_2.png', './img/ear_3.png', './img/ear_4.png', './img/ear_5.png', './img/ear_6.png',
   // 鼻噴劑
-  '.img/nasal_1.png','./img/nasal_2.png','./img/nasal_3.png','./img/nasal_4.png','./img/nasal_5.png'
+  './img/nasal_1.png', './img/nasal_2.png', './img/nasal_3.png', './img/nasal_4.png','./img/nasal_5.png'
 ];
 
 self.addEventListener('install', (e) => {
