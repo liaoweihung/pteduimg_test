@@ -16,7 +16,7 @@ const ASSETS = [
   // 耳滴劑
   './img/ear_1.png', './img/ear_2.png', './img/ear_3.png', './img/ear_4.png', './img/ear_5.png', './img/ear_6.png',
   // 鼻噴劑
-  './img/nasal_1.png', './img/nasal_2.png', './img/nasal_3.png', './img/nasal_4.png'
+  './img/nasal_1.png', './img/nasal_2.png', './img/nasal_3.png', './img/nasal_4.png', './img/nasal_5.png'
 ];
 
 // ... 上面的 CACHE_NAME 和 ASSETS 清單維持您原本的寫法 ...
