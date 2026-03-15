@@ -111,6 +111,22 @@ header {
         }
         .dot { width: 8px; height: 8px; background: #555; border-radius: 50%; }
         .dot.active { background: white; width: 20px; border-radius: 4px; transition: 0.3s; }
+   /* 👇 2. QR Code 彈出視窗的樣式 👇 */
+        #qr-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.95); z-index: 10000; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .qr-box {
+            background: white; padding: 30px; border-radius: 16px; text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .qr-title { margin-top: 0; margin-bottom: 20px; color: #2c3e50; font-size: 1.2rem; }
+        .qr-close {
+            margin-top: 25px; padding: 12px 40px; background: #2c3e50; color: white;
+            border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold;
+        }
+    
     </style>
 </head>
 <body>
@@ -127,6 +143,27 @@ header {
 <div class="section-title">📚 完整衛教步驟</div>
 <div class="menu-grid" id="all-grid"></div>
 
+<div id="qr-modal">
+    <div class="qr-box">
+        <h3 class="qr-title">請患者掃描下載</h3>
+        <canvas id="qr-canvas"></canvas> 
+        <br>
+        <button class="qr-close" onclick="closeQRModal()">完成</button>
+    </div>
+</div>
+
+<div id="viewer">
+    <div class="viewer-header">
+        <span id="v-title" style="font-size:1.2rem; font-weight:bold;">標題</span>
+        <div style="display: flex; align-items: center;">
+            <div onclick="showQRCode()" style="font-size: 1.6rem; color: #fff; cursor: pointer; padding-right: 20px;">🔲</div>
+            
+            <div id="viewer-fav-btn" onclick="toggleCurrentFav()">❤</div>
+            <div onclick="closeViewer()" style="font-size: 2rem; cursor: pointer; line-height: 1; padding-left: 20px;">✕</div>
+        </div>
+    </div>
+    </div>
+   
 <div id="viewer">
     <div class="viewer-header">
         <span id="v-title" style="font-size:1.2rem; font-weight:bold;">標題</span>
@@ -263,6 +300,34 @@ header {
     });
 
     window.onload = renderHome;
+// === 新增：產生並顯示 QR Code ===
+    function showQRCode() {
+        const data = educationData[currentType];
+        const currentImgPath = data.steps[currentIdx];
+
+        // 1. 自動抓取您在 GitHub Pages 上的真實網址路徑
+        let currentUrl = window.location.href.split('?')[0]; // 把尾巴的參數去掉
+        let basePath = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1);
+        let fullImgUrl = basePath + currentImgPath; // 組合出這張圖片的絕對網址
+
+        // 2. 呼叫 QRious 套件生成 QR Code
+        new QRious({
+            element: document.getElementById('qr-canvas'),
+            value: fullImgUrl,    // 掃描後會前往的網址
+            size: 220,            // QR Code 的大小
+            background: 'white',
+            foreground: 'black'
+        });
+
+        // 3. 顯示彈出視窗
+        document.getElementById('qr-modal').style.display = 'flex';
+    }
+
+    // === 新增：關閉 QR Code 視窗 ===
+    function closeQRModal() {
+        document.getElementById('qr-modal').style.display = 'none';
+    }
+
 </script>
 </body>
 </html>
