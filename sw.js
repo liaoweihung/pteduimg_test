@@ -6,7 +6,8 @@ const ASSETS = [
   './index.html',
   './manifest.json',
   './icon.png',
-  // ⚠️ 已經把外部的 QR Code 網址移除了，確保本地圖片能順利下載！
+ // 👇 把本地的 QR Code 產生器加入快取 👇
+  './qrious.min.js',
   
   // 眼藥膏
   './img/eye_1.png', './img/eye_2.png', './img/eye_3.png', './img/eye_4.png', './img/eye_5.png', './img/eye_6.png',
