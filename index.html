@@ -231,18 +231,6 @@
         updateContent();
     }
 
-    const touchZone = document.getElementById('touch-zone');
-    touchZone.addEventListener('click', (e) => {
-        if (e.clientX > window.innerWidth / 2) changeStep(1);
-        else changeStep(-1);
-    });
-
-    let touchStartX = 0;
-    touchZone.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-    touchZone.addEventListener('touchend', e => {
-        let diff = touchStartX - e.changedTouches[0].screenX;
-        if (Math.abs(diff) > 50) changeStep(diff > 0 ? 1 : -1);
-    });
 
     function showQRCode() {
         const path = educationData[currentType].steps[currentIdx];
