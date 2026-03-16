@@ -1,5 +1,5 @@
 // 更新時間戳記，強迫重新整理
-const CACHE_NAME = 'pharmacist-edu-202603160113'; 
+const CACHE_NAME = 'pharmacist-edu-202603160914'; 
 
 const ASSETS = [
   './',
@@ -16,7 +16,9 @@ const ASSETS = [
   // 耳滴劑
   './img/ear_1.png', './img/ear_2.png', './img/ear_3.png', './img/ear_4.png', './img/ear_5.png', './img/ear_6.png',
   // 鼻噴劑
-  './img/nasal_1.png', './img/nasal_2.png', './img/nasal_3.png', './img/nasal_4.png', './img/nasal_5.png'
+  './img/nasal_1.png', './img/nasal_2.png', './img/nasal_3.png', './img/nasal_4.png', './img/nasal_5.png',
+  // NTG舌下
+  './img/ntg_1.png', './img/ntg_2.png', './img/ntg_3.png'
 ];
 
 // ... 上面的 CACHE_NAME 和 ASSETS 清單維持您原本的寫法 ...
