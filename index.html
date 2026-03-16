@@ -107,6 +107,23 @@
     touch-action: pinch-zoom; /* 僅允許縮放，手勢翻頁由按鈕處理 */
 }
 
+        /* 5. 底部說明與提示文字區域 (非浮動) */
+        .step-desc {
+            flex: 0 0 auto;
+            background: rgba(0,0,0,0.9); /* 與進度點相同的底色 */
+            color: #e0e0e0;              /* 柔和的淺灰色字體，閱讀舒適 */
+            padding: 0 20px 20px 20px;   /* 調整間距讓它緊貼進度點下方 */
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+        
+        /* 微調原本的進度點底部間距，讓它跟文字更緊密 */
+        .footer-minimal { 
+            flex: 0 0 auto; padding: 15px 20px 10px 20px; background: rgba(0,0,0,0.9); 
+            display: flex; justify-content: center; align-items: center; gap: 10px; 
+        }
         
     </style>
 </head>
@@ -150,8 +167,8 @@
         <div class="nav-btn left-btn" onclick="changeStep(-1)">❮</div>
         <div class="nav-btn right-btn" onclick="changeStep(1)">❯</div>
     </div>
-
     <div class="footer-minimal" id="v-steps"></div>
+    <div id="v-desc" class="step-desc"></div>
 </div>
 
 <script>
@@ -208,14 +225,28 @@
         renderHome(); 
     }
 
-    function updateContent() {
+function updateContent() {
         const data = educationData[currentType];
         document.getElementById('v-title').innerText = `${data.title} (${currentIdx + 1}/${data.steps.length})`;
         document.getElementById('main-img').src = data.steps[currentIdx];
         document.getElementById('v-steps').innerHTML = data.steps.map((_, i) => `<div class="dot ${i === currentIdx ? 'active' : ''}"></div>`).join('');
         const currentKey = `${currentType}-${currentIdx}`;
         document.getElementById('viewer-fav-btn').className = favoriteImages.includes(currentKey) ? 'active' : '';
+
+        // 👇 新增：更新底部文字區塊的邏輯 👇
+        const descElement = document.getElementById('v-desc');
+        if (data.texts && data.texts[currentIdx]) {
+            // 情況 A：如果有設定專屬的衛教台詞，就顯示台詞
+            descElement.innerHTML = data.texts[currentIdx];
+            descElement.style.color = '#fff'; // 台詞用亮白色強調
+        } else {
+            // 情況 B：如果沒設定，就顯示給新使用者的「預設操作提示」
+            descElement.innerHTML = '💡 提示：點擊兩側按鈕翻頁，雙指可放大圖片查看細節';
+            descElement.style.color = '#a4b0be'; // 提示用暗灰色，不喧賓奪主
+        }
     }
+
+    
 
     function toggleCurrentFav() {
         const currentKey = `${currentType}-${currentIdx}`;
