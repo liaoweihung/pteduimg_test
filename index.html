@@ -343,6 +343,21 @@ function updateContent() {
         applyTransform();
     }
     window.onload = renderHome;
+
+// 👇 請把這段喚醒大腦的程式碼貼在這裡 👇
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(registration => {
+                    console.log('離線大腦 (Service Worker) 註冊成功！', registration.scope);
+                })
+                .catch(error => {
+                    console.log('離線大腦註冊失敗：', error);
+                });
+        });
+    }
+    // 👆 貼到這裡為止 👆
+    
 </script>
 </body>
 </html>
