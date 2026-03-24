@@ -1,5 +1,5 @@
 // 更新時間戳記，強迫重新整理
-const CACHE_NAME = 'pharmacist-edu-202603200912'; 
+const CACHE_NAME = 'pharmacist-edu-202603241710'; 
 
 const ASSETS = [
   './',
@@ -24,7 +24,9 @@ const ASSETS = [
   // 陰道軟膏
   './img/vag_oint_1.png', './img/vag_oint_2.png', './img/vag_oint_3.png', './img/vag_oint_4.png', './img/vag_oint_5.png', './img/vag_oint_6.png',
   // 痔瘡軟膏 內痔
-  './img/hem_oint_1.png', './img/hem_oint_2.png', './img/hem_oint_3.png', './img/hem_oint_4.png', './img/hem_oint_5.png', './img/hem_oint_6.png'
+  './img/hem_oint_1.png', './img/hem_oint_2.png', './img/hem_oint_3.png', './img/hem_oint_4.png', './img/hem_oint_5.png', './img/hem_oint_6.png',
+  // 多國語言圖
+  './img/lan_1.png'
 ];
 
 // ... 上面的 CACHE_NAME 和 ASSETS 清單維持您原本的寫法 ...
