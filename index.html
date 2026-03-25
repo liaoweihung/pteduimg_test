@@ -266,6 +266,9 @@
         resetZoom(); // 👈 新增：打開新圖片時重置縮放
         updateContent();
         document.getElementById('viewer').style.display = 'flex';
+        // 👇 新增：每次打開圖卡時，自動抓取圖卡標題並發送 GA4 追蹤 👇
+        if (educationData[type]) {
+            trackImageUsage(educationData[type].title);
     }
 
     function closeViewer() { 
