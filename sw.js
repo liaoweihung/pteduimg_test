@@ -1,5 +1,5 @@
 // 更新時間戳記，強迫重新整理
-const CACHE_NAME = 'pharmacist-edu-202604010953'; 
+const CACHE_NAME = 'pharmacist-edu-202604010957'; 
 
 const ASSETS = [
   './',
