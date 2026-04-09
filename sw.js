@@ -1,7 +1,8 @@
 // 更新時間戳記，強迫重新整理
-const CACHE_NAME = 'pwa-cache-v202604091810'; 
+const CACHE_NAME = 'pwa-cache-v202604100215'; 
 
-const ASSETS = [
+// 👇 這裡從 ASSETS 改成了 urlsToCache，這樣 Python 管家才找得到！
+const urlsToCache = [
   './',
   './index.html',
   './manifest.json',
@@ -24,19 +25,20 @@ const ASSETS = [
   './img/vag_oint_1.png', './img/vag_oint_2.png', './img/vag_oint_3.png', './img/vag_oint_4.png', './img/vag_oint_5.png', './img/vag_oint_6.png',
   // 痔瘡軟膏 內痔
   './img/hem_oint_1.png', './img/hem_oint_2.png', './img/hem_oint_3.png', './img/hem_oint_4.png', './img/hem_oint_5.png', './img/hem_oint_6.png',
-  //MDI 吸入器的圖
+  // MDI 吸入器的圖
   './img/MDI_1.png', './img/MDI_2.png', './img/MDI_3.png', './img/MDI_4.png', './img/MDI_5.png', './img/MDI_6.png', './img/MDI_7.png',
   // 多國語言圖
   './img/lan_1.png', './img/lan_2.png',
   // 貼片
   './img/Lidopat_1.png', './img/Nicotine_1.png', 
   // 跌倒
-  './img/slipped_fall_wound.png'
+  './img/slipped_fall_wound.png',
+  './img/wound_oint.png' // 👈 補上這張新圖片！
 ];
 
 // === 安裝階段 ===
 self.addEventListener('install', (e) => {
-  // 👇 關鍵 1：跳過等待，強制成為最新版
+  // 關鍵 1：跳過等待，強制成為最新版
   self.skipWaiting(); 
   
   e.waitUntil(
@@ -44,7 +46,7 @@ self.addEventListener('install', (e) => {
       console.log('開始逐一快取檔案...');
       // 防彈寫法：即使某個檔案找不到，也不會中斷其他檔案的下載
       return Promise.all(
-        ASSETS.map(url => {
+        urlsToCache.map(url => { // 👈 這裡也對應改成了 urlsToCache
           return cache.add(url).catch(err => {
             console.error('⚠️ 這支檔案找不到，請檢查 GitHub 檔名：', url);
           });
@@ -56,7 +58,7 @@ self.addEventListener('install', (e) => {
 
 // === 啟動階段 ===
 self.addEventListener('activate', (e) => {
-  // 👇 關鍵 2：立刻接管目前所有打開的頁面
+  // 關鍵 2：立刻接管目前所有打開的頁面
   e.waitUntil(clients.claim()); 
 
   e.waitUntil(
