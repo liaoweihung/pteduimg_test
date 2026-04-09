@@ -272,17 +272,34 @@
     let currentType = '', currentIdx = 0;
 
     function renderHome() {
-        const allGrid = document.getElementById('all-grid');
+        // 1. 把原本的 allGrid 換成抓取我們新建立的兩個網格
+        const drugGrid = document.getElementById('drug-grid');
+        const lifeGrid = document.getElementById('life-grid');
         const favGrid = document.getElementById('fav-grid');
-        allGrid.innerHTML = '';
+        
+        // 2. 每次重新渲染前，先清空網格
+        drugGrid.innerHTML = '';
+        lifeGrid.innerHTML = '';
         favGrid.innerHTML = '';
 
         Object.keys(educationData).forEach(key => {
-            allGrid.innerHTML += `
+            const item = educationData[key];
+            
+            // 把按鈕的 HTML 結構先準備好
+            const buttonHTML = `
                 <div class="menu-item" onclick="openViewer('${key}', 0)">
-                    <span class="icon">${educationData[key].icon}</span>
-                    <div style="font-weight:bold; font-size:1.1rem;">${educationData[key].title}</div>
+                    <span class="icon">${item.icon}</span>
+                    <div style="font-weight:bold; font-size:1.1rem;">${item.title}</div>
                 </div>`;
+
+            // 3. 分流邏輯：判斷剛才設定的 category 標籤
+            if (item.category === 'life') {
+                lifeGrid.innerHTML += buttonHTML; // 如果是 life，放進下方日常照護區
+            } else {
+                drugGrid.innerHTML += buttonHTML; // 其他沒有特別標記的，預設都放進上方藥品區
+            }
+            
+            // (如果您原本的程式碼裡面，這裡還有寫把按鈕塞進 favGrid 的邏輯，請記得保留！)
         });
 
         favoriteImages.forEach(favKey => {
