@@ -1,5 +1,5 @@
 // 更新時間戳記，強迫重新整理
-const CACHE_NAME = 'pharmacist-edu-v27 260409'; 
+const CACHE_NAME = 'pwa-cache-v202604091700'; 
 
 const ASSETS = [
   './',
