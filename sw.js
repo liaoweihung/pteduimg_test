@@ -1,39 +1,69 @@
 // 更新時間戳記，強迫重新整理
-const CACHE_NAME = 'pwa-cache-v202604100215'; 
+const CACHE_NAME = 'pwa-cache-v202604101338'; 
 
 // 👇 這裡從 ASSETS 改成了 urlsToCache，這樣 Python 管家才找得到！
 const urlsToCache = [
   './',
   './index.html',
-  './manifest.json',
-  './icon.png',
-  './qrious.min.js',
-  
-  // 眼藥膏
-  './img/eye_1.png', './img/eye_2.png', './img/eye_3.png', './img/eye_4.png', './img/eye_5.png', './img/eye_6.png',
-  // 肛門塞劑
-  './img/rec_1.png', './img/rec_2.png', './img/rec_3.png', './img/rec_4.png', './img/rec_5.png', './img/rec_6.png', './img/rec_7.png', './img/rec_8.png',
-  // 耳滴劑
-  './img/ear_1.png', './img/ear_2.png', './img/ear_3.png', './img/ear_4.png', './img/ear_5.png', './img/ear_6.png',
-  // 鼻噴劑
-  './img/nasal_1.png', './img/nasal_2.png', './img/nasal_3.png', './img/nasal_4.png', './img/nasal_5.png',
-  // NTG舌下
-  './img/NTG_1.png', './img/NTG_2.png', './img/NTG_3.png',
-  // 陰道塞劑
-  './img/vag_1.png', './img/vag_2.png', './img/vag_3.png', './img/vag_4.png',
-  // 陰道軟膏
-  './img/vag_oint_1.png', './img/vag_oint_2.png', './img/vag_oint_3.png', './img/vag_oint_4.png', './img/vag_oint_5.png', './img/vag_oint_6.png',
-  // 痔瘡軟膏 內痔
-  './img/hem_oint_1.png', './img/hem_oint_2.png', './img/hem_oint_3.png', './img/hem_oint_4.png', './img/hem_oint_5.png', './img/hem_oint_6.png',
-  // MDI 吸入器的圖
-  './img/MDI_1.png', './img/MDI_2.png', './img/MDI_3.png', './img/MDI_4.png', './img/MDI_5.png', './img/MDI_6.png', './img/MDI_7.png',
-  // 多國語言圖
-  './img/lan_1.png', './img/lan_2.png',
-  // 貼片
-  './img/Lidopat_1.png', './img/Nicotine_1.png', 
-  // 跌倒
+  './img/nasal_4.png',
+  './img/rec_1.png',
+  './img/lan_2.png',
+  './img/rec_8.png',
+  './img/hem_oint_1.png',
+  './img/eye_4.png',
+  './img/MDI_3.png',
+  './img/NTG_1.png',
+  './img/hem_oint_6.png',
+  './img/MDI_7.png',
+  './img/rec_3.png',
+  './img/nasal_5.png',
+  './img/MDI_4.png',
+  './img/vag_oint_3.png',
+  './img/eye_6.png',
+  './img/ear_4.png',
+  './img/nasal_2.png',
+  './img/eye_5.png',
+  './img/Nicotine_1.png',
+  './img/ear_1.png',
+  './img/ear_6.png',
+  './img/ear_5.png',
+  './img/MDI_1.png',
+  './img/Neupro.png',
+  './img/vag_1.png',
+  './img/vag_oint_5.png',
+  './img/eye_3.png',
+  './img/vag_3.png',
+  './img/MDI_2.png',
+  './img/vag_4.png',
+  './img/ear_3.png',
+  './img/NTG_3.png',
   './img/slipped_fall_wound.png',
-  './img/wound_oint.png' // 👈 補上這張新圖片！
+  './img/lan_1.png',
+  './img/eye_2.png',
+  './img/vag_oint_1.png',
+  './img/eye_1.png',
+  './img/rec_2.png',
+  './img/vag_oint_2.png',
+  './img/rec_6.png',
+  './img/MDI_5.png',
+  './img/vag_oint_6.png',
+  './img/rec_5.png',
+  './img/oint_choose.png',
+  './img/vag_2.png',
+  './img/hem_oint_4.png',
+  './img/hem_oint_5.png',
+  './img/hem_oint_3.png',
+  './img/MDI_6.png',
+  './img/rec_4.png',
+  './img/NTG_2.png',
+  './img/wound_oint.png',
+  './img/hem_oint_2.png',
+  './img/nasal_1.png',
+  './img/ear_2.png',
+  './img/rec_7.png',
+  './img/vag_oint_4.png',
+  './img/nasal_3.png',
+  './img/Lidopat_1.png'
 ];
 
 // === 安裝階段 ===
