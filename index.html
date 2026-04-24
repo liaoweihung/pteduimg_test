@@ -253,7 +253,7 @@
 
 <header>
     <img src="icon.png" alt="圖示" class="header-icon">
-    <span>藥局衛教助手</span>
+    <span>藥局衛教助手</span><span style="font-size:0.75rem;background:#27ae60;color:white;border-radius:999px;padding:3px 8px;margin-left:8px;">自動分類版</span>
 </header>
 
 <div id="fav-section" style="display:none;">
@@ -261,15 +261,8 @@
     <div class="menu-grid" id="fav-grid"></div>
 </div>
 
-<!-- 👇 把原本的完整衛教步驟，拆成以下兩個區塊 👇 -->
-
-<div class="section-title">💊 藥品使用衛教</div>
-<div class="menu-grid" id="drug-grid"></div>
-
-<div class="section-title">🩹 日常照護衛教圖卡</div>
-<div class="menu-grid" id="life-grid"></div>
-
-<!-- 👆 拆分結束 👆 -->
+<!-- 分類區塊會由 cards.json 自動產生，不用再手動修改 index.html -->
+<div id="category-sections"><div style="padding:20px;color:#7f8c8d;">正在讀取 cards.json 自動分類資料...</div></div>
 
 <div id="qr-modal">
     <div class="qr-box">
@@ -301,83 +294,67 @@
 </div>
 
 <script>
-    const educationData = {
-        'eye': { category: 'drug', title: '眼藥膏', icon: '👁️', steps: ['img/eye_1.png', 'img/eye_2.png', 'img/eye_3.png', 'img/eye_4.png', 'img/eye_5.png', 'img/eye_6.png'] },
-        'multi_lang': { category: 'drug', title: '多語服藥時間', icon: '🌍', steps: ['img/lan_1.png', 'img/lan_2.png'],  texts: ['外籍看護服藥時間對照表 (包含英、泰、印、越)(第一頁)','外籍看護服藥時間對照表 (第二頁)'] },
-        'ear': { category: 'drug', title: '耳滴劑', icon: '👂', steps: ['img/ear_1.png', 'img/ear_2.png', 'img/ear_3.png', 'img/ear_4.png', 'img/ear_5.png', 'img/ear_6.png'] },
-        'nasal': { category: 'drug', title: '鼻噴劑', icon: '👃', steps: ['img/nasal_1.png','img/nasal_2.png','img/nasal_3.png','img/nasal_4.png','img/nasal_5.png'] },
-        'NTG': {  category: 'drug', title: 'NTG 舌下錠', icon: '💊',  steps: ['img/NTG_1.png', 'img/NTG_2.png', 'img/NTG_3.png'] },
-        'MDI': {  category: 'drug', title: 'MDI 吸入器', icon: '🌬️', steps: ['img/MDI_1.png', 'img/MDI_2.png', 'img/MDI_3.png', 'img/MDI_4.png', 'img/MDI_5.png', 'img/MDI_6.png', 'img/MDI_7.png']  },
-        'hem_oint': {  category: 'drug', title: '痔瘡軟膏(內)', icon: '🧻', steps: ['img/hem_oint_1.png', 'img/hem_oint_2.png', 'img/hem_oint_3.png', 'img/hem_oint_4.png', 'img/hem_oint_5.png', 'img/hem_oint_6.png']  },
-        'rectal': { category: 'drug', title: '肛門塞劑', icon: '🍑', steps: ['img/rec_1.png', 'img/rec_2.png', 'img/rec_3.png', 'img/rec_4.png','img/rec_5.png','img/rec_6.png','img/rec_7.png','img/rec_8.png'] },
-        'vaginal': {  category: 'drug', title: '陰道塞劑', icon: '🧴',  steps: ['img/vag_1.png', 'img/vag_2.png', 'img/vag_3.png', 'img/vag_4.png']  },
-        'vag_oint': {  category: 'drug', title: '陰道軟膏', icon: '🌸', steps: ['img/vag_oint_1.png', 'img/vag_oint_2.png', 'img/vag_oint_3.png', 'img/vag_oint_4.png', 'img/vag_oint_5.png', 'img/vag_oint_6.png']  },     
-        'Ped_abx_susp': { 
-            category: 'drug', 
-            title: '兒科抗生素藥水泡製', 
-            icon: '🍼', 
-            steps: [
-                'img/Ped_abx_susp_1.png', 
-                'img/Ped_abx_susp_2.png', 
-                'img/Ped_abx_susp_3.png', 
-                'img/Ped_abx_susp_4.png', 
-                'img/Ped_abx_susp_5.png', 
-                'img/Ped_abx_susp_6.png', 
-                'img/Ped_abx_susp_7.png', 
-                'img/Ped_abx_susp_8.png'
-            ],
-            // 👇 結合我們上一集的 SEO 戰略：把精華文字萃取出來給 Google 搜尋引擎看
-            texts: [
-                '小兒抗生素水劑一般泡製方式1',
-                '用冷開水，不能用熱水',
-                '搖晃均勻方法',
-                '再加水到刻度線',
-                '再次搖勻',
-                '使用前要搖一搖',
-                '不可冷凍! 過期就丟棄，顏色稍微變深是正常的',
-                '整合全部的步驟' 
-            ] 
-        },
-        'Ped_susp': {  category: 'drug', title: '安滅菌糖漿泡製', icon: '👶', steps: ['img/AugmentinSyrup.png' ] },
-        'fall_wound': {  category: 'life', title: '傷口與疤痕',  icon: '🤕', steps: ['img/slipped_fall_wound.png', 'img/wound_oint.png', 'img/oint_choose.png', 'img/prevent_scar.png', 'img/artficial_vs_paraffin.png' ] },
-        'Wet_Wrap' : {  category: 'life', title: '濕敷療法',  icon: '💦' , steps: ['img/Wet_Wrap.png'] },
-        'DM_damage' : {  category: 'life', title: '長期高血糖的危害', icon: '🍭', steps: ['img/DM_damage.png'] },
-        'hair_wash' : {  category: 'life', title: '洗去頭皮油膏', icon: '💆', steps: ['img/Ps_hair_wash.png'] }
+    // 教育圖卡資料改由 build.py 產生 cards.json，新增圖片時不再手動改 index.html
+    let educationData = {};
+
+    const categoryMeta = {
+        drug: { title: '💊 藥品使用衛教', order: 10 },
+        operation: { title: '🧴 操作教學', order: 20 },
+        multilingual: { title: '🌍 多語服藥時間', order: 30 },
+        life: { title: '🩹 日常照護衛教圖卡', order: 40 },
+        uncategorized: { title: '📦 其他圖卡', order: 99 }
     };
+
+    async function loadEducationData() {
+        try {
+            const response = await fetch('./cards.json?v=' + Date.now(), { cache: 'no-store' });
+            if (!response.ok) throw new Error('cards.json not found');
+            educationData = await response.json();
+        } catch (err) {
+            console.error('無法讀取 cards.json：', err);
+            document.getElementById('category-sections').innerHTML = `
+                <div style="padding:20px; color:#c0392b; line-height:1.6;">
+                    找不到圖卡資料 cards.json。請先執行 <b>python build.py</b>，或確認 GitHub Actions 已完成自動建置。
+                </div>`;
+            educationData = {};
+        }
+    }
 
     let favoriteImages = JSON.parse(localStorage.getItem('favImages')) || [];
     let currentType = '', currentIdx = 0;
 
     function renderHome() {
-        // 1. 把原本的 allGrid 換成抓取我們新建立的兩個網格
-        const drugGrid = document.getElementById('drug-grid');
-        const lifeGrid = document.getElementById('life-grid');
+        const sectionRoot = document.getElementById('category-sections');
         const favGrid = document.getElementById('fav-grid');
-        
-        // 2. 每次重新渲染前，先清空網格
-        drugGrid.innerHTML = '';
-        lifeGrid.innerHTML = '';
+        sectionRoot.innerHTML = '';
         favGrid.innerHTML = '';
 
+        const categories = {};
         Object.keys(educationData).forEach(key => {
             const item = educationData[key];
-            
-            // 把按鈕的 HTML 結構先準備好
-            const buttonHTML = `
-                <div class="menu-item" onclick="openViewer('${key}', 0)">
-                    <span class="icon">${item.icon}</span>
-                    <div style="font-weight:bold; font-size:1.1rem;">${item.title}</div>
-                </div>`;
-
-            // 3. 分流邏輯：判斷剛才設定的 category 標籤
-            if (item.category === 'life') {
-                lifeGrid.innerHTML += buttonHTML; // 如果是 life，放進下方日常照護區
-            } else {
-                drugGrid.innerHTML += buttonHTML; // 其他沒有特別標記的，預設都放進上方藥品區
-            }
-            
-            // (如果您原本的程式碼裡面，這裡還有寫把按鈕塞進 favGrid 的邏輯，請記得保留！)
+            const cat = item.category || 'uncategorized';
+            if (!categories[cat]) categories[cat] = [];
+            categories[cat].push({ key, item });
         });
+
+        Object.keys(categories)
+            .sort((a, b) => (categoryMeta[a]?.order || 99) - (categoryMeta[b]?.order || 99))
+            .forEach(cat => {
+                const title = categoryMeta[cat]?.title || cat;
+                const gridId = `grid-${cat}`;
+                sectionRoot.innerHTML += `<div class="section-title">${title}</div><div class="menu-grid" id="${gridId}"></div>`;
+                const grid = document.getElementById(gridId);
+
+                categories[cat]
+                    .sort((a, b) => (a.item.order || 999) - (b.item.order || 999) || a.item.title.localeCompare(b.item.title, 'zh-Hant'))
+                    .forEach(({ key, item }) => {
+                        grid.innerHTML += `
+                            <div class="menu-item" onclick="openViewer('${key}', 0)">
+                                <span class="icon">${item.icon || '📌'}</span>
+                                <div style="font-weight:bold; font-size:1.1rem;">${item.title}</div>
+                            </div>`;
+                    });
+            });
 
         favoriteImages.forEach(favKey => {
             const [type, idxStr] = favKey.split('-');
@@ -408,7 +385,7 @@
         if (typeof gtag === 'function') {
             gtag('event', 'view_instruction_step', {
                 'card_title': educationData[type].title,
-                'step_number': (idx + 1) // 將程式的 0 轉換為人類理解的第 1 步
+                'step_number': (currentIdx + 1) // 將程式的 0 轉換為人類理解的第 1 步
             });
         }
         // 👆 新增結束 👆
@@ -551,7 +528,7 @@ function updateContent() {
         pointY = 0;
         applyTransform();
     }
-    window.onload = renderHome;
+    window.onload = () => loadEducationData().then(renderHome);
 
 // 👇 請把這段喚醒大腦的程式碼貼在這裡 👇
   if ('serviceWorker' in navigator) {
