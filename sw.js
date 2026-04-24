@@ -1,5 +1,5 @@
 // 更新時間戳記，強迫重新整理
-const CACHE_NAME = 'pwa-cache-v202604231704'; 
+const CACHE_NAME = 'pwa-cache-v202604240322'; 
 
 // 👇 這裡從 ASSETS 改成了 urlsToCache，這樣 Python 管家才找得到！
 const urlsToCache = [
@@ -38,11 +38,14 @@ const urlsToCache = [
   './img/eye_3.png',
   './img/vag_3.png',
   './img/MDI_2.png',
+  './img/Ped_abx_susp_7.png',
   './img/vag_4.png',
   './img/prevent_scar.png',
   './img/ear_3.png',
   './img/NTG_3.png',
   './img/slipped_fall_wound.png',
+  './img/Ped_abx_susp_6.png',
+  './img/Ped_abx_susp_5.png',
   './img/lan_1.png',
   './img/eye_2.png',
   './img/vag_oint_1.png',
@@ -50,15 +53,20 @@ const urlsToCache = [
   './img/rec_2.png',
   './img/vag_oint_2.png',
   './img/rec_6.png',
+  './img/Ped_abx_susp_3.png',
   './img/MDI_5.png',
   './img/vag_oint_6.png',
+  './img/Ped_abx_susp_8.png',
   './img/rec_5.png',
   './img/oint_choose.png',
+  './img/Ped_abx_susp_1.png',
   './img/vag_2.png',
   './img/hem_oint_4.png',
   './img/hem_oint_5.png',
   './img/hem_oint_3.png',
   './img/MDI_6.png',
+  './img/Ped_abx_susp_4.png',
+  './img/Ped_abx_susp_2.png',
   './img/ZithromaxPOS.png',
   './img/rec_4.png',
   './img/NTG_2.png',
