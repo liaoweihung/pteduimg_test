@@ -253,39 +253,26 @@
         .top-nav a.active { background:#2c3e50; color:white; }
         .page-note { margin:10px 20px 0; padding:10px 12px; border-radius:12px; background:#ffffff; color:#5d6d7e; font-size:0.9rem; line-height:1.4; border:1px solid #e5e8e8; }
 
-        /* 藥師頁：維持深色 */
-body.pharmacist-page {
-    background: #1f2937;
-}
+        /* 頁面辨識色：只改最上方 header bar，其他底色維持原本樣式 */
+        body.pharmacist-page header {
+            background: #2c3e50;
+            color: #ffffff;
+        }
 
-body.pharmacist-page header {
-    background: #111827;
-}
+        body.public-page header {
+            background: #e0f2fe;
+            color: #1e3a8a;
+        }
 
-/* 民眾頁：淡色版 */
-body.public-page {
-    background: #f3f7f4;
-}
+        body.pharmacist-page header a,
+        body.pharmacist-page header span {
+            color: #ffffff;
+        }
 
-body.public-page header {
-    background: #dbeafe;
-    color: #1f2937;
-}
-
-body.public-page .card,
-body.public-page .section,
-body.public-page .favorite-section {
-    background: #ffffff;
-}
-
-body.public-page .nav a {
-    color: #1f2937;
-}
-
-body.public-page .nav a.active {
-    background: #bfdbfe;
-    color: #1e3a8a;
-}
+        body.public-page header a,
+        body.public-page header span {
+            color: #1e3a8a;
+        }
     </style>
 </head>
 <body>
