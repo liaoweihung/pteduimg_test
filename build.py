@@ -11,10 +11,10 @@ CARDS_FILE = Path('cards.json')
 IMAGE_EXTS = {'.png', '.jpg', '.jpeg', '.webp'}
 
 CATEGORY_RULES = [
-    ('multilingual', '🌍', ['lan_', 'lang', 'multi']),
-    ('operation', '🧴', ['eye_', 'ear_', 'nasal_', 'rec_', 'vag_', 'hem_', 'mdi', 'susp', 'syrup', 'pos', 'augmentin', 'zithromax']),
-    ('drug', '💊', ['ntg', 'neupro', 'lidopat', 'nicotine']),
-    ('life', '🩹', ['wound', 'scar', 'wrap', 'dm_', 'hair', 'fall', 'damage', 'wash'])
+    ('pharmacist_general', '🌍', ['lan_', 'lang', 'multi']),
+    ('pharmacist_product', '💊', ['augmentin', 'zithromax', 'neupro', 'lidopat', 'nicotine']),
+    ('pharmacist_general', '🧴', ['eye_', 'ear_', 'nasal_', 'rec_', 'vag_', 'hem_', 'mdi', 'susp', 'syrup', 'pos', 'ntg']),
+    ('public_education', '🩹', ['wound', 'scar', 'wrap', 'dm_', 'hair', 'fall', 'damage', 'wash'])
 ]
 
 TITLE_WORDS = {
@@ -110,7 +110,7 @@ def update_service_worker(data):
         print('⚠️ 找不到 sw.js，略過 PWA 快取更新')
         return
 
-    cache_list = ["'./'", "'./index.html'", "'./cards.json'", "'./manifest.json'", "'./icon.png'"]
+    cache_list = ["'./'", "'./index.html'", "'./public.html'", "'./cards.json'", "'./manifest.json'", "'./icon.png'"]
     for item in data.values():
         for img_path in item['steps']:
             cache_list.append(f"'./{img_path}'")

@@ -1,6 +1,6 @@
 {
   "DM_damage": {
-    "category": "life",
+    "category": "public_education",
     "title": "長期高血糖的危害",
     "icon": "🍭",
     "order": 30,
@@ -9,10 +9,10 @@
     ]
   },
   "ear": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "耳滴劑",
     "icon": "👂",
-    "order": 20,
+    "order": 30,
     "steps": [
       "img/ear_1.png",
       "img/ear_2.png",
@@ -23,7 +23,7 @@
     ]
   },
   "eye": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "眼藥膏",
     "icon": "👁️",
     "order": 10,
@@ -37,7 +37,7 @@
     ]
   },
   "fall_wound": {
-    "category": "life",
+    "category": "public_education",
     "title": "傷口與疤痕",
     "icon": "🤕",
     "order": 10,
@@ -50,7 +50,7 @@
     ]
   },
   "hair_wash": {
-    "category": "life",
+    "category": "public_education",
     "title": "洗去頭皮油膏",
     "icon": "💆",
     "order": 40,
@@ -59,10 +59,10 @@
     ]
   },
   "hem_oint": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "痔瘡軟膏(內)",
     "icon": "🧻",
-    "order": 50,
+    "order": 70,
     "steps": [
       "img/hem_oint_1.png",
       "img/hem_oint_2.png",
@@ -73,19 +73,19 @@
     ]
   },
   "Lidopat": {
-    "category": "drug",
+    "category": "pharmacist_product",
     "title": "Lidopat 貼片",
     "icon": "🩹",
-    "order": 30,
+    "order": 50,
     "steps": [
       "img/Lidopat_1.png"
     ]
   },
   "MDI": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "MDI 吸入器",
     "icon": "🌬️",
-    "order": 40,
+    "order": 60,
     "steps": [
       "img/MDI_1.png",
       "img/MDI_2.png",
@@ -97,10 +97,10 @@
     ]
   },
   "multi_lang": {
-    "category": "multilingual",
+    "category": "pharmacist_general",
     "title": "多語服藥時間",
     "icon": "🌍",
-    "order": 10,
+    "order": 20,
     "texts": [
       "外籍看護服藥時間對照表（英、泰、印、越）第一頁",
       "外籍看護服藥時間對照表第二頁"
@@ -111,10 +111,10 @@
     ]
   },
   "nasal": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "鼻噴劑",
     "icon": "👃",
-    "order": 30,
+    "order": 40,
     "steps": [
       "img/nasal_1.png",
       "img/nasal_2.png",
@@ -124,28 +124,28 @@
     ]
   },
   "Neupro": {
-    "category": "drug",
+    "category": "pharmacist_product",
     "title": "Neupro 貼片",
     "icon": "🩹",
-    "order": 20,
+    "order": 40,
     "steps": [
       "img/Neupro.png"
     ]
   },
   "Nicotine": {
-    "category": "drug",
+    "category": "pharmacist_product",
     "title": "尼古丁貼片",
     "icon": "🚭",
-    "order": 40,
+    "order": 30,
     "steps": [
       "img/Nicotine_1.png"
     ]
   },
   "NTG": {
-    "category": "drug",
+    "category": "pharmacist_general",
     "title": "NTG 舌下錠",
     "icon": "💊",
-    "order": 10,
+    "order": 50,
     "steps": [
       "img/NTG_1.png",
       "img/NTG_2.png",
@@ -153,10 +153,10 @@
     ]
   },
   "Ped_abx_susp": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "兒科抗生素藥水泡製",
     "icon": "🍼",
-    "order": 90,
+    "order": 110,
     "texts": [
       "小兒抗生素水劑一般泡製方式",
       "用冷開水，不能用熱水",
@@ -179,19 +179,19 @@
     ]
   },
   "Ped_susp": {
-    "category": "operation",
+    "category": "pharmacist_product",
     "title": "安滅菌糖漿泡製",
     "icon": "👶",
-    "order": 100,
+    "order": 10,
     "steps": [
       "img/AugmentinSyrup.png"
     ]
   },
   "rectal": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "肛門塞劑",
     "icon": "🍑",
-    "order": 60,
+    "order": 80,
     "steps": [
       "img/rec_1.png",
       "img/rec_2.png",
@@ -204,10 +204,10 @@
     ]
   },
   "vag_oint": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "陰道軟膏",
     "icon": "🌸",
-    "order": 80,
+    "order": 100,
     "steps": [
       "img/vag_oint_1.png",
       "img/vag_oint_2.png",
@@ -218,10 +218,10 @@
     ]
   },
   "vaginal": {
-    "category": "operation",
+    "category": "pharmacist_general",
     "title": "陰道塞劑",
     "icon": "🧴",
-    "order": 70,
+    "order": 90,
     "steps": [
       "img/vag_1.png",
       "img/vag_2.png",
@@ -230,7 +230,7 @@
     ]
   },
   "Wet_Wrap": {
-    "category": "life",
+    "category": "public_education",
     "title": "濕敷療法",
     "icon": "💦",
     "order": 20,
@@ -239,10 +239,10 @@
     ]
   },
   "ZithromaxPOS": {
-    "category": "operation",
+    "category": "pharmacist_product",
     "title": "日舒泡製",
     "icon": "🍼",
-    "order": 110,
+    "order": 20,
     "steps": [
       "img/ZithromaxPOS.png"
     ]
