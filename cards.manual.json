@@ -100,6 +100,7 @@
   "ZithromaxPOS": {
     "category": "pharmacist_product",
     "title": "日舒泡製",
+    "hidden": true,
     "icon": "🍼",
     "order": 20,
     "patterns": [
@@ -143,12 +144,14 @@
   "Neupro": {
     "category": "pharmacist_product",
     "title": "Neupro 貼片",
+    "hidden": true,
     "icon": "🩹",
     "order": 40
   },
   "Lidopat": {
     "category": "pharmacist_product",
     "title": "Lidopat 貼片",
+    "hidden": true,
     "icon": "🩹",
     "order": 50,
     "patterns": [
@@ -158,6 +161,7 @@
   "Nicotine": {
     "category": "pharmacist_product",
     "title": "尼古丁貼片",
+    "hidden": true,
     "icon": "🚭",
     "order": 30,
     "patterns": [
