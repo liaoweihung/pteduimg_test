@@ -334,11 +334,20 @@
     }
 
     function setupPageHeader() {
-        const meta = pageMeta[PAGE_TYPE];
-        document.querySelector('header span').innerText = meta.title;
-        document.getElementById('page-note').innerText = meta.note;
-        document.getElementById(meta.navId)?.classList.add('active');
+    const meta = pageMeta[PAGE_TYPE];
+    document.querySelector('header span').innerText = meta.title;
+
+    const noteElement = document.getElementById('page-note');
+
+    if (meta.note) {
+        noteElement.innerText = meta.note;
+        noteElement.style.display = '';
+    } else {
+        noteElement.style.display = 'none';
     }
+
+    document.getElementById(meta.navId)?.classList.add('active');
+}
 
     async function loadEducationData() {
         try {
