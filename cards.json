@@ -76,6 +76,7 @@
     "category": "pharmacist_product",
     "title": "Lidopat 貼片",
     "icon": "🩹",
+     "hidden": true,
     "order": 50,
     "steps": [
       "img/Lidopat_1.png"
@@ -127,6 +128,7 @@
     "category": "pharmacist_product",
     "title": "Neupro 貼片",
     "icon": "🩹",
+     "hidden": true,
     "order": 40,
     "steps": [
       "img/Neupro.png"
@@ -136,6 +138,7 @@
     "category": "pharmacist_product",
     "title": "尼古丁貼片",
     "icon": "🚭",
+     "hidden": true,
     "order": 30,
     "steps": [
       "img/Nicotine_1.png"
@@ -238,10 +241,40 @@
       "img/Wet_Wrap.png"
     ]
   },
+  "over_one_oint": {
+  "title": "藥膏一起擦",
+  "category": "public_education",
+  "order": 40,
+  "hidden": false,
+  "icon": "🧴",
+  "texts": ["","","","整合內容"],
+  "steps": [
+    "img/over_one_oint_01.png",
+    "img/over_one_oint_02.png",
+    "img/over_one_oint_03.png",
+    "img/over_one_oint_04.png"
+  ]
+},
+  "onitment_general": {
+  "title": "藥膏的使用",
+  "category": "pharmacist_general",
+  "order": 25,
+  "hidden": false,
+  "icon": "🧴",
+  "steps": [
+    "img/oneFTU.png",
+    "img/thin_skin_part.png",
+    "img/over_one_oint_01.png",
+    "img/over_one_oint_02.png",
+    "img/over_one_oint_03.png",
+    "img/over_one_oint_04.png"
+  ]
+},
   "ZithromaxPOS": {
     "category": "pharmacist_product",
     "title": "日舒泡製",
     "icon": "🍼",
+     "hidden": true,
     "order": 20,
     "steps": [
       "img/ZithromaxPOS.png"
