@@ -53,6 +53,46 @@
     <script src="./qrious.min.js"></script>
     <link rel="stylesheet" href="./css/base.css?v=1">
     <link rel="stylesheet" href="./css/pharmacist.css?v=1">
+
+<style>
+/* === 我的最愛：上移 / 下移按鈕 === */
+.fav-item {
+    position: relative;
+    padding-bottom: 44px;
+}
+
+.fav-sort-buttons {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 8px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.fav-sort-buttons button {
+    border: none;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: #eef2f7;
+    color: #2c3e50;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+.fav-sort-buttons button:active {
+    transform: scale(0.96);
+}
+
+.fav-sort-buttons button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+</style>
+
 </head>
 <body>
 
@@ -167,6 +207,26 @@
     }
 
     let favoriteImages = JSON.parse(localStorage.getItem('favImages')) || [];
+
+    function saveFavorites() {
+        localStorage.setItem('favImages', JSON.stringify(favoriteImages));
+    }
+
+    function moveFavorite(favKey, direction) {
+        const currentIndex = favoriteImages.indexOf(favKey);
+        if (currentIndex === -1) return;
+
+        const newIndex = currentIndex + direction;
+        if (newIndex < 0 || newIndex >= favoriteImages.length) return;
+
+        const temp = favoriteImages[currentIndex];
+        favoriteImages[currentIndex] = favoriteImages[newIndex];
+        favoriteImages[newIndex] = temp;
+
+        saveFavorites();
+        renderHome();
+    }
+
     let currentType = '', currentIdx = 0;
 
     function renderHome() {
@@ -208,13 +268,19 @@
         favoriteImages.forEach(favKey => {
             const [type, idxStr] = favKey.split('-');
             const idx = parseInt(idxStr);
+            if (educationData[type] && educationData[type].hidden) return;
             if(educationData[type] && educationData[type].steps[idx] && isVisibleOnPage(educationData[type])) {
                 visibleFavCount++;
+                const favIndex = favoriteImages.indexOf(favKey);
                 favGrid.innerHTML += `
                     <div class="menu-item fav-item" onclick="openViewer('${type}', ${idx})">
                         <span class="icon">${educationData[type].icon}</span>
                         <div style="font-weight:bold; font-size:1.1rem;">${educationData[type].title}</div>
                         <div class="fav-label">步驟 ${idx + 1}</div>
+                        <div class="fav-sort-buttons" onclick="event.stopPropagation();">
+                            <button onclick="moveFavorite('${favKey}', -1)" ${favIndex === 0 ? 'disabled' : ''}>↑ 上移</button>
+                            <button onclick="moveFavorite('${favKey}', 1)" ${favIndex === favoriteImages.length - 1 ? 'disabled' : ''}>↓ 下移</button>
+                        </div>
                     </div>`;
             }
         });
@@ -272,7 +338,7 @@ function updateContent() {
         const currentKey = `${currentType}-${currentIdx}`;
         if (favoriteImages.includes(currentKey)) favoriteImages = favoriteImages.filter(k => k !== currentKey);
         else favoriteImages.push(currentKey);
-        localStorage.setItem('favImages', JSON.stringify(favoriteImages));
+        saveFavorites();
         updateContent();
     }
 
